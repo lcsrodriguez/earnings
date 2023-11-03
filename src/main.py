@@ -2,5 +2,12 @@ from .utils import *
 
 
 class Earnings:
+    __slots__ = ("sym",)
+
     def __init__(self, sym: str = ""):
-        pass
+        self.sym = sym
+
+    def getCompanyInfo(self) -> dict:
+        ...
+
+
