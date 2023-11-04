@@ -10,4 +10,7 @@ class Earnings:
     def getCompanyInfo(self) -> dict:
         ...
 
+    # 1: Expect -- 2: Vote
 
+    def getExpectationsEstimates(self):
+        ...
