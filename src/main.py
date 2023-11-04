@@ -2,10 +2,19 @@ from .utils import *
 
 
 class Earnings:
-    __slots__ = ("sym",)
+    __slots__ = ("_sym",)
 
     def __init__(self, sym: str = ""):
-        self.sym = sym
+        self._sym = str(sym).upper()
+
+    def _premCheck(self) -> bool:
+        return checkSymbol(self._sym)
+
+    def __str__(self) -> str:
+        return f"Earnings ({self._sym})"
+
+    def __repr__(self) -> None:
+        print(self.__str__())
 
     def getCompanyInfo(self) -> dict:
         ...
@@ -14,3 +23,4 @@ class Earnings:
 
     def getExpectationsEstimates(self):
         ...
+
