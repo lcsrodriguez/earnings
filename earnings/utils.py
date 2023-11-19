@@ -3,6 +3,7 @@ from typing import Union
 import requests
 import datetime
 
+
 def get(url: str = "") -> requests.Response: # Union[dict, str]:
     r = requests.get(url=url, headers={
         "Referer": f"{MAIN_URL}"

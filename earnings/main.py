@@ -50,11 +50,11 @@ class Earnings:
                 self.stockData["website"] = get(f"{MAIN_URL}/api/gotowebsite/{self._sym}").url
         return self.stockData
 
-    def getQuotes(self):
+    def getQuotes(self) -> dict:
         r = get(f"{MAIN_URL}/api/getquotes/{self._sym}")
         return r.json()[self._sym]
 
-    def getExpectedPriceAction(self):
+    def getExpectedPriceAction(self) -> list:
         r = post(f"{MAIN_URL}/api/vote",
                  {
                      "ticker": self._sym,
@@ -63,7 +63,7 @@ class Earnings:
         r.json()[-1]["totalHolds"] -= 1
         return r.json()
 
-    def getExpectedPriceAction(self):
+    def getExpectedPriceAction(self) -> list:
         r = post(f"{MAIN_URL}/api/expect",
                  {
                      "ticker": self._sym,
@@ -72,3 +72,6 @@ class Earnings:
         r.json()[-1]["meet"] -= 1
         r.json()[-1]["total"] -= 1
         return r.json()
+
+    def getLastEarningsDetails(self) -> dict:
+        ...
