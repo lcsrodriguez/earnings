@@ -60,8 +60,9 @@ class Earnings:
                      "ticker": self._sym,
                      "vote": DEFAULT_POST_OPTIONS["vote"]
                  })
-        r.json()[-1]["totalHolds"] -= 1
-        return r.json()
+        res = r.json()
+        res[-1]["totalHolds"] -= 1
+        return res
 
     def getExpectedPriceAction(self) -> list:
         r = post(f"{MAIN_URL}/api/expect",
@@ -69,10 +70,13 @@ class Earnings:
                      "ticker": self._sym,
                      "vote": DEFAULT_POST_OPTIONS["expect"]
                  })
-        r.json()[-1]["meet"] -= 1
-        r.json()[-1]["total"] -= 1
-        return r.json()
+        res = r.json()
+        res[-1]["meet"] -= 1
+        res[-1]["total"] -= 1
+        return res
 
     def getLastEarningsDetails(self) -> dict:
         r = get(f"{MAIN_URL}/api/epsdetails/{self._sym}")
-        return r.json()
+        res = r.json()
+        res["article"] = get(f"{MAIN_URL}/api/newsarticle/{self._sym}/{r.json()['fileName']}").json()
+        return res
