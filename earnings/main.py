@@ -74,4 +74,5 @@ class Earnings:
         return r.json()
 
     def getLastEarningsDetails(self) -> dict:
-        ...
+        r = get(f"{MAIN_URL}/api/epsdetails/{self._sym}")
+        return r.json()
