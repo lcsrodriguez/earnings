@@ -26,3 +26,6 @@ class Earnings:
     def getExpectationsEstimates(self):
         ...
 
+    def getQuotes(self):
+        r = get(f"{MAIN_URL}/api/getquotes/{self._sym}")
+        return r.json()[self._sym]
