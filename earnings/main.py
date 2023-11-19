@@ -26,7 +26,7 @@ class Earnings:
     def getEarningsDates(self):
         if self.earningsDates["last"] is None or self.earningsDates["next"] is None:
             if self.stockData is None:
-                self.getCompanyInfo()
+                self.getCompanyInfo(_full=False)
             if "." not in self.stockData["lastEPSTime"]:
                 self.stockData["lastEPSTime"] += ".00"
             if "." not in self.stockData["nextEPSDate"]:
@@ -42,11 +42,11 @@ class Earnings:
             }
         return self.earningsDates
 
-    def getCompanyInfo(self) -> dict:
+    def getCompanyInfo(self, _full: bool = True) -> dict:
         if self.stockData is None:
             r = get(f"{MAIN_URL}/api/getstocksdata/{self._sym}")
             self.stockData = r.json()
-            if "website" not in self.stockData:
+            if _full and "website" not in self.stockData:
                 self.stockData["website"] = get(f"{MAIN_URL}/api/gotowebsite/{self._sym}").url
         return self.stockData
 
