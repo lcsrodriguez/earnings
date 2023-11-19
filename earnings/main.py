@@ -85,3 +85,11 @@ class Earnings:
         f_url: str = "weekly" if freq == Frequency.WEEKLY else ""
         r = get(f"{MAIN_URL}/api/get{f_url}chartdata/{self._sym}")
         return r.json()
+
+    def getNews(self):
+        r = get(f"{MAIN_URL}/api/getnews/{self._sym}")
+        return r.json()
+
+    def getArticle(self, articleId: int):
+        r = get(f"{MAIN_URL}/api/newsarticle/{self._sym}/{articleId}")
+        return r.json()
