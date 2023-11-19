@@ -1,6 +1,8 @@
 from .utils import *
 
 
+## TODO: Calendar (with earnings calendar)
+
 class Earnings:
     __slots__ = ("_sym",)
 
