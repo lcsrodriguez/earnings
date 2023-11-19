@@ -80,3 +80,8 @@ class Earnings:
         res = r.json()
         res["article"] = get(f"{MAIN_URL}/api/newsarticle/{self._sym}/{r.json()['fileName']}").json()
         return res
+
+    def getChartData(self, freq: Frequency = Frequency.DAILY) -> dict:
+        f_url: str = "weekly" if freq == Frequency.WEEKLY else ""
+        r = get(f"{MAIN_URL}/api/get{f_url}chartdata/{self._sym}")
+        return r.json()
