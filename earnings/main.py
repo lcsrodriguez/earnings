@@ -22,7 +22,9 @@ class Earnings:
     def getCompanyInfo(self) -> dict:
         if self.stockData is None:
             r = get(f"{MAIN_URL}/api/getstocksdata/{self._sym}")
-            self.stockData = r.json()[self._sym]
+            self.stockData = r.json()
+            if "website" not in self.stockData:
+                self.stockData["website"] = get(f"{MAIN_URL}/api/gotowebsite/{self._sym}").url
         return self.stockData
 
     def getExpectationsEstimates(self):
