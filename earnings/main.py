@@ -1,7 +1,19 @@
 from .utils import *
 
 
-## TODO: Calendar (with earnings calendar)
+class Generic:
+    @staticmethod
+    def getHeatmap() -> dict:
+        ...
+
+    @staticmethod
+    def getSPY() -> dict:
+        ...
+
+    @staticmethod
+    def getUpcomingBySector() -> dict:
+        ...
+        # TODO: No russel
 
 
 class Calendar:
@@ -30,7 +42,7 @@ class Calendar:
 class Earnings:
     __slots__ = ("_sym", "stockData", "earningsDates", "dtInstance",)
 
-    def __init__(self, sym: str = ""):
+    def __init__(self, sym: str = "") -> None:
         self._sym = str(sym).upper()
         self.dtInstance: datetime.datetime = datetime.datetime.now().replace(microsecond=0)
         self.stockData: Union[dict, None] = None
