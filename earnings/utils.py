@@ -2,6 +2,7 @@ from .constants import *
 from typing import Union
 import requests
 import datetime
+import pandas
 
 
 def get(url: str = "") -> requests.Response: # Union[dict, str]:
