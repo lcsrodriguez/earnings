@@ -27,6 +27,9 @@ class Earnings:
     def getTicker(self) -> str:
         return self._sym
 
+    def __eq__(self, other: object) -> bool:
+        return self._sym == other._sym and self.dtInstance == other.dtInstance
+
     def getEarningsDates(self):
         if self.earningsDates["last"] is None or self.earningsDates["next"] is None:
             if self.stockData is None:
