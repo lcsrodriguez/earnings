@@ -3,6 +3,30 @@ from .utils import *
 
 ## TODO: Calendar (with earnings calendar)
 
+
+class Calendar:
+    __slots__ = ()
+
+    def __new__(cls, *args, **kwargs):
+        if not hasattr(cls, "instance"):
+            cls.instance = super(Calendar, cls).__new__(cls, *args, **kwargs)
+        return cls.instance
+
+    def __init__(self) -> None:
+        ...
+
+    def getEarningsByDay(self, day: Union[str, datetime.datetime, datetime.date]) -> dict:
+        if isinstance(day, str):
+            day = datetime.date.fromisoformat(day)
+        elif isinstance(day, datetime.datetime):
+            day = day.date()
+        assert type(day) == datetime.date
+        if day.weekday() in [5, 6]:
+            raise Exception("weekend")
+        r = get(f"{MAIN_URL}/api/caldata/{day.isoformat().replace('-', '')}")
+        return r.json()
+
+
 class Earnings:
     __slots__ = ("_sym", "stockData", "earningsDates", "dtInstance",)
 
