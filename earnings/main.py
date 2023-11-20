@@ -4,10 +4,11 @@ from .utils import *
 ## TODO: Calendar (with earnings calendar)
 
 class Earnings:
-    __slots__ = ("_sym", "stockData", "earningsDates")
+    __slots__ = ("_sym", "stockData", "earningsDates", "dtInstance",)
 
     def __init__(self, sym: str = ""):
         self._sym = str(sym).upper()
+        self.dtInstance: datetime.datetime = datetime.datetime.now().replace(microsecond=0)
         self.stockData: Union[dict, None] = None
         self.earningsDates: dict = {"last": None, "next": None}
 
