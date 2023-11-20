@@ -108,3 +108,7 @@ class Earnings:
     def getPivotPoints(self) -> dict:
         r = get(f"{MAIN_URL}/api/pivotpoints/{self._sym}/")
         return r.json()
+
+    def getCandleCurrentQuarter(self) -> dict:
+        r = get(f"{MAIN_URL}/api/getqhist/{self._sym}/")
+        return r.json()
