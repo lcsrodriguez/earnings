@@ -93,3 +93,7 @@ class Earnings:
     def getArticle(self, articleId: int):
         r = get(f"{MAIN_URL}/api/newsarticle/{self._sym}/{articleId}")
         return r.json()
+
+    def getPivotPoints(self):
+        r = get(f"{MAIN_URL}/api/pivotpoints/{self._sym}/")
+        return r.json()
