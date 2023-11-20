@@ -24,6 +24,9 @@ class Earnings:
     def __hash__(self) -> int:
         return hash(self._sym)
 
+    def getTicker(self) -> str:
+        return self._sym
+
     def getEarningsDates(self):
         if self.earningsDates["last"] is None or self.earningsDates["next"] is None:
             if self.stockData is None:
