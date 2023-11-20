@@ -1,8 +1,10 @@
 from .constants import *
-from typing import Union
+from typing import Union, Callable
 import requests
 import datetime
-import pandas
+import pandas as pd
+
+tdf: Callable[[dict], pd.DataFrame] = lambda j: pd.DataFrame(data=j)
 
 
 def get(url: str = "") -> requests.Response: # Union[dict, str]:
