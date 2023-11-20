@@ -112,3 +112,7 @@ class Earnings:
     def getCandleCurrentQuarter(self) -> dict:
         r = get(f"{MAIN_URL}/api/getqhist/{self._sym}/")
         return r.json()
+
+    def getWeeklyNetBuyRating(self) -> dict:
+        r = get(f"{MAIN_URL}/api/anrechist?symbol={self._sym}")
+        return r.json()
