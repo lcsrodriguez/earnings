@@ -86,14 +86,18 @@ class Earnings:
         r = get(f"{MAIN_URL}/api/get{f_url}chartdata/{self._sym}")
         return r.json()
 
-    def getNews(self):
+    def getNews(self) -> dict:
+        """
+        Returning news articles (in time-descending order)
+        :return:
+        """
         r = get(f"{MAIN_URL}/api/getnews/{self._sym}")
         return r.json()
 
-    def getArticle(self, articleId: int):
+    def getArticle(self, articleId: int) -> dict:
         r = get(f"{MAIN_URL}/api/newsarticle/{self._sym}/{articleId}")
         return r.json()
 
-    def getPivotPoints(self):
+    def getPivotPoints(self) -> dict:
         r = get(f"{MAIN_URL}/api/pivotpoints/{self._sym}/")
         return r.json()
