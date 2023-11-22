@@ -1,3 +1,5 @@
+import datetime
+
 from .utils import *
 
 
@@ -116,9 +118,11 @@ class Earnings:
             self.getEarningsDates()
         return self.earningsDates["last"]["event_dt"]
 
-    def getNextEarningsDate(self) -> datetime.datetime:
+    def getNextEarningsDate(self) -> Union[datetime.datetime, str]:
         if self.earningsDates["next"] is None:
             self.getEarningsDates()
+        if self.earningsDates["next"]["event_dt"] < datetime.datetime.now():
+            return f"TBN"
         return self.earningsDates["next"]["event_dt"]
 
     def getCompanyInfo(self, _full: bool = True) -> dict:
