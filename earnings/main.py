@@ -70,11 +70,13 @@ class Calendar:
 class Earnings:
     __slots__ = ("_sym", "stockData", "earningsDates", "dtInstance",)
 
-    def __init__(self, sym: str = "") -> None:
+    def __init__(self, sym: str = "", preRetrieval: bool = False) -> None:
         self._sym = str(sym).upper()
         self.dtInstance: datetime.datetime = datetime.datetime.now().replace(microsecond=0)
         self.stockData: Union[dict, None] = None
         self.earningsDates: dict = {"last": None, "next": None}
+        if bool(preRetrieval):
+            self.getCompanyInfo(_full=True)
 
     def _premCheck(self) -> bool:
         return Generic.checkSymbol(self._sym)
@@ -131,7 +133,6 @@ class Earnings:
             self.stockData = r.json()
             if _full and "website" not in self.stockData:
                 self.stockData["website"] = get(f"{MAIN_URL}/api/gotowebsite/{self._sym}").url
-                # TODO: Add logo
         return self.stockData
 
     def getQuotes(self) -> dict:
