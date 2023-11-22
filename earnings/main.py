@@ -111,6 +111,16 @@ class Earnings:
             }
         return self.earningsDates
 
+    def getLastEarningsDate(self) -> datetime.datetime:
+        if self.earningsDates["last"] is None:
+            self.getEarningsDates()
+        return self.earningsDates["last"]["event_dt"]
+
+    def getNextEarningsDate(self) -> datetime.datetime:
+        if self.earningsDates["next"] is None:
+            self.getEarningsDates()
+        return self.earningsDates["next"]["event_dt"]
+
     def getCompanyInfo(self, _full: bool = True) -> dict:
         if self.stockData is None:
             r = get(f"{MAIN_URL}/api/getstocksdata/{self._sym}")
