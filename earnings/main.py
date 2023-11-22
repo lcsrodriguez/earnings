@@ -11,13 +11,12 @@ class Generic:
 
     @staticmethod
     def getSPY() -> dict:
+        """
+        Returning the last 6-month daily candle OHLC data
+        :return: dict
+        """
         r = get(f"{MAIN_URL}/api/getspydata")
         return r.json()
-
-    @staticmethod
-    def getUpcomingBySector() -> dict:
-        ...
-        # TODO: Do not include russel results
 
     @staticmethod
     def checkSymbol(_sym: str = "") -> bool:
@@ -51,6 +50,14 @@ class Calendar:
         if day.weekday() in [5, 6]:
             raise Exception("weekend")
         r = get(f"{MAIN_URL}/api/caldata/{day.isoformat().replace('-', '')}")
+        return r.json()
+
+    def getConfirmedUpcomingEarningsBySector(self) -> dict:
+        """
+        Returning the confirmed upcoming earnings by sector
+        :return: dict
+        """
+        r = get(f"{MAIN_URL}/api/upcomingsectors")
         return r.json()
 
 
