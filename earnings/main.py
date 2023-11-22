@@ -75,7 +75,7 @@ class Earnings:
         self.earningsDates: dict = {"last": None, "next": None}
 
     def _premCheck(self) -> bool:
-        return checkSymbol(self._sym)
+        return Generic.checkSymbol(self._sym)
 
     def __str__(self) -> str:
         return f"Earnings ({self._sym})"
