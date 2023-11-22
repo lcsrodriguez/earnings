@@ -52,13 +52,17 @@ class Calendar:
         r = get(f"{MAIN_URL}/api/caldata/{day.isoformat().replace('-', '')}")
         return r.json()
 
-    def getConfirmedUpcomingEarningsBySector(self) -> dict:
+    def getConfirmedUpcomingEarningsBySector(self, sector: Sector = Sector.ALL) -> dict:
         """
         Returning the confirmed upcoming earnings by sector
         :return: dict
         """
+        assert isinstance(sector, Sector)
         r = get(f"{MAIN_URL}/api/upcomingsectors")
-        return r.json()
+        res = r.json()
+        if sector != Sector.ALL:
+            res = list(filter(lambda x: x["sector"] == sector.name, res))
+        return res
 
 
 class Earnings:

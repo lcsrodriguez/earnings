@@ -20,6 +20,7 @@ class Sector(Enum):
     XLU: str = "Utilities"
     XLV: str = "Health Care"
     XLY: str = "Consumer Discretionary"
+    ALL: int = -1
 
 
 class Heatmap(Enum):
