@@ -3,12 +3,16 @@ from .utils import *
 
 class Generic:
     @staticmethod
-    def getHeatmap() -> dict:
-        ...
+    def getHeatmap(mode: Heatmap = Heatmap.PRICES_MOVES) -> dict:
+        assert isinstance(mode, Heatmap) #type(mode) == Heatmap
+        _p: str = "?cat=rev" if mode == Heatmap.ESTIMATE_MOVES else ""
+        r = get(f"{MAIN_URL}/api/getheatmap{_p}")
+        return r.json()["children"]
 
     @staticmethod
     def getSPY() -> dict:
-        ...
+        r = get(f"{MAIN_URL}/api/getspydata")
+        return r.json()
 
     @staticmethod
     def getUpcomingBySector() -> dict:

@@ -20,3 +20,8 @@ class Sector(Enum):
     XLU: str = "Utilities"
     XLV: str = "Health Care"
     XLY: str = "Consumer Discretionary"
+
+
+class Heatmap(Enum):
+    PRICES_MOVES:       int = 0
+    ESTIMATE_MOVES:     int = 1
