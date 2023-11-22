@@ -19,15 +19,3 @@ def post(url: str, p) -> requests.Response:
         "Referer": f"{MAIN_URL}"
     }, data=p)
     return r
-
-
-def checkSymbol(_sym: str = "") -> bool:
-    try:
-        r = post(f"{MAIN_URL}/api/tickers", {"symbol": _sym})
-    except Exception as e:
-        print(f"Exception (error: {e})")
-        return False
-    if r.status_code == 200: # // 100 == 2:
-        return len([k for k in r.json() if k["ticker"] == str(_sym).upper()]) == 1
-    return False
-

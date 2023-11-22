@@ -13,7 +13,18 @@ class Generic:
     @staticmethod
     def getUpcomingBySector() -> dict:
         ...
-        # TODO: No russel
+        # TODO: Do not include russel results
+
+    @staticmethod
+    def checkSymbol(_sym: str = "") -> bool:
+        try:
+            r = post(f"{MAIN_URL}/api/tickers", {"symbol":_sym})
+        except Exception as e:
+            print(f"Exception (error: {e})")
+            return False
+        if r.status_code == 200:  # // 100 == 2:
+            return len([k for k in r.json() if k["ticker"] == str(_sym).upper()]) == 1
+        return False
 
 
 class Calendar:
@@ -91,6 +102,7 @@ class Earnings:
             self.stockData = r.json()
             if _full and "website" not in self.stockData:
                 self.stockData["website"] = get(f"{MAIN_URL}/api/gotowebsite/{self._sym}").url
+                # TODO: Add logo
         return self.stockData
 
     def getQuotes(self) -> dict:
