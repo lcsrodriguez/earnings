@@ -1,6 +1,22 @@
 from .utils import *
 
 
+class Ticker:
+    __slots__ = ("ticker",)
+    BLANK_TICKER: int = 0
+
+    def __init__(self, sym: str = "") -> None:
+        self.ticker: Union[str, None] = None
+        self.setTicker(sym=sym)
+
+    def setTicker(self, sym: str = "") -> str:
+        self.ticker = str(sym).upper()
+        return self.ticker
+
+    def getTicker(self) -> str:
+        return self.ticker
+
+
 class Generic:
     @staticmethod
     def getHeatmap(mode: Heatmap = Heatmap.PRICES_MOVES) -> dict:
