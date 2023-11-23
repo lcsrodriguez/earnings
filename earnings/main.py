@@ -23,8 +23,10 @@ class Ticker:
 class Portfolio:
     __slots__ = ("tickers",)
 
-    def __init__(self) -> None:
+    def __init__(self, *args, **kwargs) -> None:
         self.tickers: list = []
+        if len(args) > 0 and all([type(e) == str for e in args]):
+            _ = [self.addTicker(sym=e) for e in args]
 
     def addTicker(self, sym: Union[str, Ticker] = Ticker.BLANK_TICKER) -> bool:
         t = Generic.getCleanTicker(sym)
