@@ -45,6 +45,14 @@ class Generic:
             return len([k for k in r.json() if k["ticker"] == str(_sym).upper()]) == 1
         return False
 
+    @staticmethod
+    def getCleanTicker(sym: Union[str, Ticker] = Ticker.BLANK_TICKER) -> Ticker:
+        if isinstance(sym, str):
+            t: Ticker = Ticker(sym)
+        elif isinstance(sym, Ticker):
+            t: Ticker = sym
+        return t
+
 
 class Calendar:
     __slots__ = ()
