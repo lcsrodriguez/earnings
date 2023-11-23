@@ -7,11 +7,11 @@ class Ticker:
 
     def __init__(self, sym: str = "") -> None:
         self.ticker: Union[str, None] = Ticker.BLANK_TICKER
-        self.setTicker(sym=sym)
+        self.setTicker(_sym=sym)
 
-    def setTicker(self, sym: str = "") -> str:
-        self.ticker = str(sym).upper()
-        return self.ticker if self.ticker != "" else Ticker.BLANK_TICKER
+    def setTicker(self, _sym: str = "") -> str:
+        self.ticker = str(_sym).upper() if _sym != "" else Ticker.BLANK_TICKER
+        return self.ticker
 
     def getTicker(self) -> str:
         return self.ticker
