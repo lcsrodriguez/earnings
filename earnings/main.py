@@ -3,7 +3,7 @@ from .utils import *
 
 class Ticker:
     __slots__ = ("ticker",)
-    BLANK_TICKER: int = 0
+    BLANK_TICKER: str = "BLANK_TICKER"
 
     def __init__(self, sym: str = "") -> None:
         self.ticker: Union[str, None] = None
@@ -11,11 +11,32 @@ class Ticker:
 
     def setTicker(self, sym: str = "") -> str:
         self.ticker = str(sym).upper()
-        return self.ticker
+        return self.ticker if self.ticker != "" else Ticker.BLANK_TICKER
 
     def getTicker(self) -> str:
         return self.ticker
 
+
+class Portfolio:
+    __slots__ = ("tickers",)
+
+    def __init__(self) -> None:
+        self.tickers: list = []
+
+    def addTicker(self, sym: Union[str, Ticker] = Ticker.BLANK_TICKER) -> bool:
+        if sym == Ticker.BLANK_TICKER:
+            return False
+        t: str = str(sym).upper()
+        if t not in self.tickers:
+            self.tickers.append(t)
+            return True
+        return False
+
+    def removeTicker(self) -> bool:
+        ...
+
+    def getTickers(self) -> list:
+        ...
 
 class Generic:
     @staticmethod
