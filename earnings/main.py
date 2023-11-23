@@ -41,11 +41,10 @@ class Portfolio:
         t = Generic.getCleanTicker(sym)
         if t.isBlankTicker():
             return False
-        if t in self.tickers:
-            self.tickers = list(set(list(filter(lambda x: x.getTicker() == t.getTicker(), self.tickers))))
-            #self.tickers.remove(t)
-            return True
-        return False
+        l1: int = len(self.tickers)
+        self.tickers = list(set(list(filter(lambda x: x.getTicker() == t.getTicker(), self.tickers))))
+        l2: int = len(self.tickers) - l1
+        return l2 == 1
 
     def getTickers(self) -> list:
         return list(set(self.tickers))
