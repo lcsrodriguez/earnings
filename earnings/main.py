@@ -6,7 +6,7 @@ class Ticker:
     BLANK_TICKER: str = "BLANK_TICKER"
 
     def __init__(self, sym: str = "") -> None:
-        self.ticker: Union[str, None] = None
+        self.ticker: Union[str, None] = Ticker.BLANK_TICKER
         self.setTicker(sym=sym)
 
     def setTicker(self, sym: str = "") -> str:
