@@ -17,27 +17,6 @@ class Ticker:
         return self.ticker
 
 
-class Portfolio:
-    __slots__ = ("tickers",)
-
-    def __init__(self) -> None:
-        self.tickers: list = []
-
-    def addTicker(self, sym: Union[str, Ticker] = Ticker.BLANK_TICKER) -> bool:
-        if sym == Ticker.BLANK_TICKER:
-            return False
-        t: str = str(sym).upper()
-        if t not in self.tickers:
-            self.tickers.append(t)
-            return True
-        return False
-
-    def removeTicker(self) -> bool:
-        ...
-
-    def getTickers(self) -> list:
-        ...
-
 class Generic:
     @staticmethod
     def getHeatmap(mode: Heatmap = Heatmap.PRICES_MOVES) -> dict:
