@@ -20,6 +20,35 @@ class Ticker:
         return self.ticker == Ticker.BLANK_TICKER
 
 
+class Portfolio:
+    __slots__ = ("tickers",)
+
+    def __init__(self) -> None:
+        self.tickers: list = []
+
+    def addTicker(self, sym: Union[str, Ticker] = Ticker.BLANK_TICKER) -> bool:
+        t = Generic.getCleanTicker(sym)
+        if t.isBlankTicker():
+            return False
+        if t not in self.tickers:
+            self.tickers.append(t)
+            return True
+        return False
+
+    def removeTicker(self, sym: Union[str, Ticker] = Ticker.BLANK_TICKER) -> bool:
+        t = Generic.getCleanTicker(sym)
+        if t.isBlankTicker():
+            return False
+        if t in self.tickers:
+            self.tickers = list(set(list(filter(lambda x: x.getTicker() == t.getTicker(), self.tickers))))
+            #self.tickers.remove(t)
+            return True
+        return False
+
+    def getTickers(self) -> list:
+        return list(set(self.tickers))
+
+
 class Generic:
     @staticmethod
     def getHeatmap(mode: Heatmap = Heatmap.PRICES_MOVES) -> dict:
