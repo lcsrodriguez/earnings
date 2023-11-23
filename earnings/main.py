@@ -16,6 +16,9 @@ class Ticker:
     def getTicker(self) -> str:
         return self.ticker
 
+    def isBlankTicker(self) -> bool:
+        return self.ticker == Ticker.BLANK_TICKER
+
 
 class Generic:
     @staticmethod
