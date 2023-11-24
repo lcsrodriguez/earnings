@@ -49,6 +49,15 @@ class Portfolio:
     def getTickers(self) -> list:
         return list(set(self.tickers))
 
+    def importTickers(self, filename: str = "") -> bool:
+        with open(file=filename, mode="r") as f:
+            l: list = f.readlines()
+            if len(l) == 0:
+                return False
+            l = list(map(lambda x: x.replace("\n", ""), l))
+            _ = list(map(lambda x: self.addTicker(sym=x), l))
+        return True
+
 
 class Generic:
     @staticmethod
