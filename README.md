@@ -3,6 +3,12 @@
 ## Overview
 
 
+## Getting started
+
+```
+git clone https://github.com/lcsrodriguez/earnings.git
+```
+
 ## Project architecture
 
 ```
@@ -23,5 +29,7 @@
 ```
 
 ## License
+
+**[Lucas RODRIGUEZ](https://lcsrodriguez.github.io)** (Maintainer & Developer)
 
 [MIT](LICENSE)
