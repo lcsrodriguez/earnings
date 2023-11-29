@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this package, please cite it as below."
+authors:
+- family-names: "RODRIGUEZ"
+  given-names: "Lucas"
+  orcid: "https://orcid.org/0000-0000-0000-0000"
+title: "PyEarnings"
+version: 1.0.0
+doi: 10.5281/zenodo.1234
+date-released: 2023-12-01
+url: "https://github.com/lcsrodriguez/earnings"
