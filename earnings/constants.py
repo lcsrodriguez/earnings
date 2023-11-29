@@ -26,3 +26,8 @@ class Sector(Enum):
 class Heatmap(Enum):
     PRICES_MOVES:       int = 0
     ESTIMATE_MOVES:     int = 1
+
+
+class Output(Enum):
+    DICT:               int = 0
+    DATAFRAME:          int = 1
