@@ -1,8 +1,5 @@
 from .utils import *
 
-# TODO: decorator for Calendar, Generic & Earnings to define if we want to have results as dict or pd.DataFrame
-# TODO: define a parameter on __init__ + add method to change it
-
 
 def outputFormat(method):
     @wraps(method)
