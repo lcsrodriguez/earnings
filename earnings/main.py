@@ -3,15 +3,17 @@ from .utils import *
 
 def outputFormat(method):
     @wraps(method)
-    def _impl(self, *method_args, **method_kwargs):
+    def _w(self, *method_args, **method_kwargs):
         outType: Output = getattr(self, 'outputType', __default=Output.DICT)
-        assert isinstance(outType, Output)
+        if not isinstance(outType, Output):
+            raise Exception(f"The method output type is not ")
         res = method(self, *method_args, **method_kwargs)
         print(f"attribute value --> {outType}")
         if outType == Output.DATAFRAME:
             return tdf(res)
-        return res
-    return _impl
+        elif outType == Output.DICT:
+            return res
+    return _w
 
 
 class Ticker:
