@@ -1,21 +1,6 @@
 from .utils import *
 
 
-def outputFormat(method):
-    @wraps(method)
-    def _w(self, *method_args, **method_kwargs):
-        outType: Output = getattr(self, 'outputType', __default=Output.DICT)
-        if not isinstance(outType, Output):
-            raise Exception(f"The method output type is not ")
-        res = method(self, *method_args, **method_kwargs)
-        print(f"attribute value --> {outType}")
-        if outType == Output.DATAFRAME:
-            return tdf(res)
-        elif outType == Output.DICT:
-            return res
-    return _w
-
-
 class Ticker:
     __slots__ = ("ticker",)
     BLANK_TICKER: str = "BLANK_TICKER"
