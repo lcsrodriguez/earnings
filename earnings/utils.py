@@ -3,6 +3,7 @@ from typing import Union, Callable
 import requests
 import datetime
 import pandas as pd
+from functools import wraps
 
 tdf: Callable[[dict], pd.DataFrame] = lambda j: pd.DataFrame(data=j)
 

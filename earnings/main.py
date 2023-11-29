@@ -4,6 +4,19 @@ from .utils import *
 # TODO: define a parameter on __init__ + add method to change it
 
 
+def outputFormat(method):
+    @wraps(method)
+    def _impl(self, *method_args, **method_kwargs):
+        outType: Output = getattr(self, 'outputType')
+        assert isinstance(outType, Output)
+        res = method(self, *method_args, **method_kwargs)
+        print(f"attribute value --> {outType}")
+        if outType == Output.DATAFRAME:
+            return tdf(res)
+        return res
+    return _impl
+
+
 class Ticker:
     __slots__ = ("ticker",)
     BLANK_TICKER: str = "BLANK_TICKER"
