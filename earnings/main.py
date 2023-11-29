@@ -85,6 +85,7 @@ class Generic:
         return r.json()["children"]
 
     @staticmethod
+    @outputFormat
     def getSPY() -> dict:
         """
         Returning the last 6-month daily candle OHLC data
@@ -94,6 +95,7 @@ class Generic:
         return r.json()
 
     @staticmethod
+    @outputFormat
     def checkSymbol(_sym: str = "") -> bool:
         try:
             r = post(f"{MAIN_URL}/api/tickers", {"symbol":_sym})
@@ -105,6 +107,7 @@ class Generic:
         return False
 
     @staticmethod
+    @outputFormat
     def getCleanTicker(sym: Union[str, Ticker] = Ticker.BLANK_TICKER) -> Ticker:
         if isinstance(sym, str):
             t: Ticker = Ticker(sym)
@@ -114,7 +117,7 @@ class Generic:
 
 
 class Calendar:
-    __slots__ = ()
+    __slots__ = ("outputType",)
 
     def __new__(cls, *args, **kwargs):
         if not hasattr(cls, "instance"):
@@ -122,8 +125,9 @@ class Calendar:
         return cls.instance
 
     def __init__(self) -> None:
-        ...
+        self.outputType: Output = Output.DICT
 
+    @outputFormat
     def getEarningsByDay(self, day: Union[str, datetime.datetime, datetime.date]) -> dict:
         if isinstance(day, str):
             day = datetime.date.fromisoformat(day)
@@ -135,6 +139,7 @@ class Calendar:
         r = get(f"{MAIN_URL}/api/caldata/{day.isoformat().replace('-', '')}")
         return r.json()
 
+    @outputFormat
     def getConfirmedUpcomingEarningsBySector(self, sector: Sector = Sector.ALL) -> dict:
         """
         Returning the confirmed upcoming earnings by sector
@@ -149,9 +154,11 @@ class Calendar:
 
 
 class Earnings:
-    __slots__ = ("_sym", "stockData", "earningsDates", "dtInstance",)
+    __slots__ = ("outputType", "_sym", "stockData", "earningsDates", "dtInstance",)
+    output: Output = Output.DICT
 
     def __init__(self, sym: str = "", preRetrieval: bool = False) -> None:
+        self.outputType: Output = Output.DICT
         self._sym = str(sym).upper()
         self.dtInstance: datetime.datetime = datetime.datetime.now().replace(microsecond=0)
         self.stockData: Union[dict, None] = None
@@ -177,6 +184,7 @@ class Earnings:
     def __eq__(self, other: object) -> bool:
         return self._sym == other._sym and self.dtInstance == other.dtInstance
 
+    @outputFormat
     def getEarningsDates(self):
         if self.earningsDates["last"] is None or self.earningsDates["next"] is None:
             if self.stockData is None:
@@ -208,6 +216,7 @@ class Earnings:
             return f"TBN"
         return self.earningsDates["next"]["event_dt"]
 
+    @outputFormat
     def getCompanyInfo(self, full: bool = True) -> dict:
         if self.stockData is None:
             r = get(f"{MAIN_URL}/api/getstocksdata/{self._sym}")
@@ -216,6 +225,7 @@ class Earnings:
                 self.stockData["website"] = get(f"{MAIN_URL}/api/gotowebsite/{self._sym}").url
         return self.stockData
 
+    @outputFormat
     def getQuotes(self) -> dict:
         r = get(f"{MAIN_URL}/api/getquotes/{self._sym}")
         return r.json()[self._sym]
@@ -230,6 +240,7 @@ class Earnings:
         res[-1]["totalHolds"] -= 1
         return res
 
+    @outputFormat
     def getExpectedPriceAction(self) -> list:
         r = post(f"{MAIN_URL}/api/expect",
                  {
@@ -241,17 +252,20 @@ class Earnings:
         res[-1]["total"] -= 1
         return res
 
+    @outputFormat
     def getLastEarningsDetails(self) -> dict:
         r = get(f"{MAIN_URL}/api/epsdetails/{self._sym}")
         res = r.json()
         res["article"] = get(f"{MAIN_URL}/api/newsarticle/{self._sym}/{r.json()['fileName']}").json()
         return res
 
+    @outputFormat
     def getChartData(self, freq: Frequency = Frequency.DAILY) -> dict:
         f_url: str = "weekly" if freq == Frequency.WEEKLY else ""
         r = get(f"{MAIN_URL}/api/get{f_url}chartdata/{self._sym}")
         return r.json()
 
+    @outputFormat
     def getNews(self) -> dict:
         """
         Returning news articles (in time-descending order)
@@ -260,18 +274,22 @@ class Earnings:
         r = get(f"{MAIN_URL}/api/getnews/{self._sym}")
         return r.json()
 
+    @outputFormat
     def getArticle(self, articleId: int) -> dict:
         r = get(f"{MAIN_URL}/api/newsarticle/{self._sym}/{articleId}")
         return r.json()
 
+    @outputFormat
     def getPivotPoints(self) -> dict:
         r = get(f"{MAIN_URL}/api/pivotpoints/{self._sym}/")
         return r.json()
 
+    @outputFormat
     def getCandleCurrentQuarter(self) -> dict:
         r = get(f"{MAIN_URL}/api/getqhist/{self._sym}/")
         return r.json()
 
+    @outputFormat
     def getWeeklyNetBuyRating(self) -> dict:
         r = get(f"{MAIN_URL}/api/anrechist?symbol={self._sym}")
         return r.json()
