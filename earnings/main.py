@@ -7,7 +7,7 @@ from .utils import *
 def outputFormat(method):
     @wraps(method)
     def _impl(self, *method_args, **method_kwargs):
-        outType: Output = getattr(self, 'outputType')
+        outType: Output = getattr(self, 'outputType', __default=Output.DICT)
         assert isinstance(outType, Output)
         res = method(self, *method_args, **method_kwargs)
         print(f"attribute value --> {outType}")
