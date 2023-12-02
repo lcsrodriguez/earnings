@@ -4,8 +4,11 @@ from earnings import __version__
 with open("README.md", "r") as f:
     long_description = f.read()
 
+PYTHON_MODULE_NAME: str = "earnings"
+
 setuptools.setup(
-    name="earnings",
+    name=PYTHON_MODULE_NAME,
+    py_modules=[PYTHON_MODULE_NAME],
     version=__version__,
     author="Lucas RODRIGUEZ",
     author_email="lcsrodriguez@pm.me",
