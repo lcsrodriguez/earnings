@@ -9,6 +9,12 @@
 
 **DISCLAIMER**: *Data are provided as is. No warranty on data quality and accuracy. Please do your own research*
 
+- [Overview](#overview)
+- [Getting started](#getting-started)
+- [Roadmap](#roadmap)
+- [Project architecture](#project-architecture)
+- [License](#license)
+
 ## Getting started
 
 **Package**:
