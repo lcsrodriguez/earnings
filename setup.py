@@ -21,4 +21,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
+    package_dir={'': 'earnings'},
+    install_requires=[],
+    python_requires='>=3.8',
 )
