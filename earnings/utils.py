@@ -27,7 +27,7 @@ def post(url: str = "", p: Union[dict, None] = None) -> requests.Response:
 def outputFormat(method):
     @wraps(method)
     def _w(self, *method_args, **method_kwargs):
-        outType: Output = getattr(self, 'outputType', __default=Output.DICT)
+        outType: Output = getattr(self, 'outputType', Output.DICT)
         if not isinstance(outType, Output):
             raise Exception(f"The method output type is not ")
         res = method(self, *method_args, **method_kwargs)
