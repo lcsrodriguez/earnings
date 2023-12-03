@@ -103,6 +103,7 @@ class Generic:
         return t
 
 
+@addFunc("setOutputFormat", "setOutputFormat")
 class Calendar:
     __slots__ = ("outputType",)
 
@@ -140,6 +141,7 @@ class Calendar:
         return res
 
 
+@addFunc("setOutputFormat", "setOutputFormat")
 class Earnings:
     __slots__ = ("outputType", "_sym", "stockData", "earningsDates", "dtInstance",)
     output: Output = Output.DICT

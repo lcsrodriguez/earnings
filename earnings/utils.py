@@ -37,3 +37,14 @@ def outputFormat(method):
         elif outType == Output.DICT:
             return res
     return _w
+
+
+def addFunc(attrName: str = "", funcName: str = "") -> Callable:
+    def wrapper(K):
+        setattr(K, attrName, eval(funcName))
+        return K
+    return wrapper
+
+
+def setOutputFormat(self, out: Output) -> None:
+    self.outputType = out
