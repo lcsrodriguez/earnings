@@ -178,17 +178,21 @@ class Earnings:
         if self.earningsDates["last"] is None or self.earningsDates["next"] is None:
             if self.stockData is None:
                 self.getCompanyInfo(full=False)
-            if "." not in self.stockData["lastEPSTime"]:
-                self.stockData["lastEPSTime"] += ".00"
-            if "." not in self.stockData["nextEPSDate"]:
-                self.stockData["nextEPSDate"] += ".00"
-            if "." not in self.stockData["confirmDate"]:
-                self.stockData["confirmDate"] += ".00"
+            if self.stockData["lastEPSTime"] is not None:
+                if "." not in self.stockData["lastEPSTime"]:
+                    self.stockData["lastEPSTime"] += ".00"
+            if self.stockData["nextEPSDate"] is not None:
+                if "." not in self.stockData["nextEPSDate"]:
+                    self.stockData["nextEPSDate"] += ".00"
+            if self.stockData["confirmDate"] is not None:
+                if "." not in self.stockData["confirmDate"]:
+                    self.stockData["confirmDate"] += ".00"
             self.earningsDates["last"] = {
-                "event_dt": datetime.datetime.strptime(self.stockData["lastEPSTime"], '%Y-%m-%dT%H:%M:%S.%f')}
+                "event_dt": datetime.datetime.strptime(self.stockData["lastEPSTime"], '%Y-%m-%dT%H:%M:%S.%f') if self.stockData["lastEPSTime"] is not None else None
+            }
             self.earningsDates["next"] = {
-                "event_dt": datetime.datetime.strptime(self.stockData["nextEPSDate"], '%Y-%m-%dT%H:%M:%S.%f'),
-                "confirm_dt": datetime.datetime.strptime(self.stockData["confirmDate"], '%Y-%m-%dT%H:%M:%S.%f'),
+                "event_dt": datetime.datetime.strptime(self.stockData["nextEPSDate"], '%Y-%m-%dT%H:%M:%S.%f') if self.stockData["nextEPSDate"] is not None else None,
+                "confirm_dt": datetime.datetime.strptime(self.stockData["confirmDate"], '%Y-%m-%dT%H:%M:%S.%f') if self.stockData["confirmDate"] is not None else None,
                 "release_counter": int(self.stockData["releaseTime"])
             }
         return self.earningsDates

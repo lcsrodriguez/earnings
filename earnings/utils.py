@@ -31,7 +31,6 @@ def outputFormat(method):
         if not isinstance(outType, Output):
             raise Exception(f"The method output type is not ")
         res = method(self, *method_args, **method_kwargs)
-        print(f"attribute value --> {outType}")
         if outType == Output.DATAFRAME:
             return tdf(res)
         elif outType == Output.DICT:
