@@ -3,4 +3,6 @@
 venv/
 __pycache__/
 portfolios/*.pff
+
+# Excluded files
 !portfolios/template.pff
