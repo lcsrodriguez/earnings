@@ -20,3 +20,9 @@ PKG_VERSION_PYPI=1.0.1
 pip3 install  --index-url https://test.pypi.org/simple/ 
               --extra-index-url https://pypi.org/simple earnings==${PKG_VERSION_PYPI}
 ```
+
+## Other snippets
+
+```shell
+tree -L 3 -F -I 'venv|__pycache__|.DS_Store'
+```

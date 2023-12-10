@@ -5,9 +5,9 @@
 
 ## Overview
 
-**`earnings`** is a Python package tailored to retrieve insightful earnings details, allowing users to collect previous and future earnings calendars, filter by US-equity ticker, define a custom portfolio, 
+**`earnings`** is a lightweight and featureful Python package tailored to retrieve insightful earnings details, allowing users to collect previous and future earnings calendars, filter by US-equity ticker, define a custom portfolio and easily integrate reliable financial data into your applications.
 
-**DISCLAIMER**: *Data are provided **AS IS** by external providers. No warranty on data quality and accuracy. Please do your own research*
+**DISCLAIMER**: *Data are provided **AS IS** by external providers. No warranty on data quality and accuracy. Please do your own research* before deploying on production.
 
 - [Overview](#overview)
 - [Getting started](#getting-started)
@@ -32,7 +32,7 @@ def main(...) -> None:
 if __name__ == "__main__":
     main()
 ```
-3. Execute the script:
+3. Execute the sample script:
 ```shell
 python3 example.py
 ```
@@ -41,7 +41,7 @@ python3 example.py
 1. Clone the repository from GitHub:
 ```
 git clone https://github.com/lcsrodriguez/earnings.git
-cd earnings
+cd earnings/
 ```
 
 ## Roadmap
@@ -51,9 +51,16 @@ See [ROADMAP.md](docs/ROADMAP.md) file.
 ## Project architecture
 
 ```
-.
+./
+├── AUTHORS
+├── CITATION.cff
+├── Dockerfile
 ├── LICENSE
+├── Makefile
 ├── README.md
+├── docs/
+│   ├── README.md
+│   └── ROADMAP.md
 ├── earnings/
 │   ├── __init__.py
 │   ├── constants.py
@@ -61,8 +68,6 @@ See [ROADMAP.md](docs/ROADMAP.md) file.
 │   └── utils.py
 ├── examples/
 │   └── main.py
-├── out/
-├── portfolios/
 ├── requirements.txt
 └── setup.py
 ```
