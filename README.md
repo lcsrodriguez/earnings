@@ -9,11 +9,11 @@
 
 **DISCLAIMER**: *Data are provided **AS IS** by external providers. No warranty on data quality and accuracy. Please do your own research* before deploying on production.
 
-- [Overview](#overview)
-- [Getting started](#getting-started)
-- [Roadmap](#roadmap)
-- [Project architecture](#project-architecture)
-- [License](#license)
+* [Overview](#overview)
+* [Getting started](#getting-started)
+* [Roadmap](#roadmap)
+* [Project architecture](#project-architecture)
+* [License & Credits](#license--credits)
 
 ## Getting started
 
@@ -39,9 +39,16 @@ python3 example.py
 
 **Source**
 1. Clone the repository from GitHub:
-```
+```shell
 git clone https://github.com/lcsrodriguez/earnings.git
 cd earnings/
+```
+
+2. Build virtual env and install dependencies
+```shell
+python3 -m venv venv
+source ./venv/bin/activate
+pip3 install -r requirements.txt
 ```
 
 ## Roadmap
@@ -72,8 +79,22 @@ See [ROADMAP.md](docs/ROADMAP.md) file.
 └── setup.py
 ```
 
-## License
+## License & Credits
 
-**[Lucas RODRIGUEZ](https://lcsrodriguez.github.io)** (Maintainer & Developer)
+- **[Lucas RODRIGUEZ](https://lcsrodriguez.github.io)** (Maintainer & Developer)
 
-[MIT](LICENSE)
+The [LICENSE](LICENSE) file contains the full license details.
+
+
+If you are using this package for research purposes, you can quote it as shown below:
+
+```shell
+@software{RODRIGUEZ_PyEarnings_2023,
+author = {RODRIGUEZ, Lucas},
+month = dec,
+title = {{PyEarnings}},
+url = {https://github.com/lcsrodriguez/earnings},
+version = {1.0.0},
+year = {2023}
+}
+```
