@@ -16,13 +16,17 @@ pip3 install twine
 
 twine upload --repository testpypi dist/*
 
-PKG_VERSION_PYPI=1.0.2
-pip3 install  --index-url https://test.pypi.org/simple/ 
-              --extra-index-url https://pypi.org/simple earnings==${PKG_VERSION_PYPI}
+PKG_VERSION_PYPI=1.1.0
+pip3 install --index-url https://test.pypi.org/simple/ \
+             --extra-index-url https://pypi.org/simple earnings==${PKG_VERSION_PYPI}
 ```
 
-## Other snippets
+## Miscellaneous snippets
 
 ```shell
 tree -L 3 -F -I 'venv|__pycache__|.DS_Store'
+```
+
+```shell
+openssl dgst -sha256 dist/*.tar.gz
 ```
