@@ -3,7 +3,8 @@ message: "If you use this package, please cite it as below."
 authors:
 - family-names: "RODRIGUEZ"
   given-names: "Lucas"
+  url: "https://lcsrodriguez.github.io"
 title: "PyEarnings"
-version: 1.0.0
-date-released: 2023-12-01
+version: 1.0.1
+date-released: 2023-12-10
 url: "https://github.com/lcsrodriguez/earnings"
