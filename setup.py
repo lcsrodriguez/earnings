@@ -5,6 +5,7 @@ with open("README.md", "r") as f:
     long_description = f.read()
 
 PYTHON_MODULE_NAME: str = "earnings"
+REQUIREMENTS = [i.strip() for i in open("requirements.txt").readlines()]
 
 setuptools.setup(
     name=PYTHON_MODULE_NAME,
@@ -21,7 +22,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    package_dir={'': 'earnings'},
-    install_requires=[],
+    package_dir={'': '.'},
+    install_requires=REQUIREMENTS,  # [],
     python_requires='>=3.10',
 )
