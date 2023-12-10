@@ -65,6 +65,7 @@ See [ROADMAP.md](docs/ROADMAP.md) file.
 ├── LICENSE
 ├── Makefile
 ├── README.md
+├── chver.sh
 ├── docs/
 │   ├── README.md
 │   └── ROADMAP.md
@@ -75,6 +76,9 @@ See [ROADMAP.md](docs/ROADMAP.md) file.
 │   └── utils.py
 ├── examples/
 │   └── main.py
+├── out/
+├── portfolios/
+│   └── template.pff
 ├── requirements.txt
 └── setup.py
 ```
