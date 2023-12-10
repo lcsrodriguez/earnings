@@ -13,6 +13,8 @@ setuptools.setup(
     version=__version__,
     author="Lucas RODRIGUEZ",
     author_email="lcsrodriguez@pm.me",
+    license="MIT",
+    url="https://github.com/lcsrodriguez/earnings",
     description="Equity earnings Python package (confirmed calendar, news articles, earnings transcripts, ...)",
     long_description=long_description,
     long_description_content_type="text/markdown",
