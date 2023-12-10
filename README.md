@@ -7,7 +7,7 @@
 
 **`earnings`** is a Python package tailored to retrieve insightful earnings details, allowing users to collect previous and future earnings calendars, filter by US-equity ticker, define a custom portfolio, 
 
-**DISCLAIMER**: *Data are provided as is. No warranty on data quality and accuracy. Please do your own research*
+**DISCLAIMER**: *Data are provided **AS IS** by external providers. No warranty on data quality and accuracy. Please do your own research*
 
 - [Overview](#overview)
 - [Getting started](#getting-started)
