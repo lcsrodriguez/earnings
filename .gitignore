@@ -6,6 +6,8 @@ portfolios/*.pff
 *.egg-info
 build/
 dist/
+.pypirc
+.twine_credentials
 
 # Excluded files
 !portfolios/template.pff
