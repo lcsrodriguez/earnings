@@ -1,7 +1,11 @@
-# Commands
+# Additional information
 
+## Roadmap
 
-## Deployment 
+See [ROADMAP](ROADMAP.md) file.
+
+## Deployment
+
 ```shell
 rm -rf dist/ build/
 rm -rf */*.egg-info *.egg-info

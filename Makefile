@@ -12,4 +12,4 @@ install:
 
 clean:
 	@echo "Cleaning output folders..."
-	@rm -rf build dist *.egg-info
+	@rm -rf dist/ build/ */*.egg-info *.egg-info
