@@ -3,6 +3,9 @@
 venv/
 __pycache__/
 portfolios/*.pff
+*.egg-info
+build/
+dist/
 
 # Excluded files
 !portfolios/template.pff
