@@ -94,7 +94,7 @@ author = {RODRIGUEZ, Lucas},
 month = dec,
 title = {{earnings}},
 url = {https://github.com/lcsrodriguez/earnings},
-version = {1.0.1},
+version = {1.0.2},
 year = {2023}
 }
 ```

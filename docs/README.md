@@ -16,7 +16,7 @@ pip3 install twine
 
 twine upload --repository testpypi dist/*
 
-PKG_VERSION_PYPI=1.0.1
+PKG_VERSION_PYPI=1.0.2
 pip3 install  --index-url https://test.pypi.org/simple/ 
               --extra-index-url https://pypi.org/simple earnings==${PKG_VERSION_PYPI}
 ```
