@@ -92,9 +92,9 @@ If you are using this package for research purposes, you can quote it as shown b
 @software{RODRIGUEZ_PyEarnings_2023,
 author = {RODRIGUEZ, Lucas},
 month = dec,
-title = {{PyEarnings}},
+title = {{earnings}},
 url = {https://github.com/lcsrodriguez/earnings},
-version = {1.0.0},
+version = {1.0.1},
 year = {2023}
 }
 ```
