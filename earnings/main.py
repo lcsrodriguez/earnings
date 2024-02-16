@@ -113,7 +113,7 @@ class Calendar:
         return cls.instance
 
     def __init__(self) -> None:
-        self.outputType: Output = Output.DICT
+        self.outputType: Output = Output.DICT  # Default output type
 
     @outputFormat
     def getEarningsByDay(self, day: Union[str, datetime.datetime, datetime.date]) -> dict:
@@ -125,6 +125,8 @@ class Calendar:
         if day.weekday() in [5, 6]:
             raise Exception("weekend")
         r = get(f"{MAIN_URL}/api/caldata/{day.isoformat().replace('-', '')}")
+        if r.status_code:
+            return None
         return r.json()
 
     @outputFormat
@@ -161,8 +163,8 @@ class Earnings:
     def __str__(self) -> str:
         return f"Earnings ({self._sym})"
 
-    def __repr__(self) -> None:
-        print(self.__str__())
+    def __repr__(self) -> str:
+        return self.__str__()
 
     def __hash__(self) -> int:
         return hash(self._sym)
